@@ -3,13 +3,15 @@ import pygame
 
 
 class ChessPiece:
+    img_width = 64
+
     def __init__(self, is_white):
         self.cb_state = []
         root_path = os.path.dirname(os.path.abspath(__file__))
         class_name = self.__class__.__name__.lower()
         self.is_white = is_white
         self.img_path = os.path.join(root_path, f"images/{'white' if self.is_white else 'black'}/{class_name}.png")
-        self.img = pygame.transform.scale(pygame.image.load(self.img_path), (64, 64))
+        self.img = pygame.transform.scale(pygame.image.load(self.img_path), (self.img_width, self.img_width))
 
     def is_valid_pos(self, i, j):
         # return is_valid_pos, has_ate
